@@ -1,0 +1,31 @@
+<!--brand area start-->
+<div class="brand_area">
+    <div class="container">
+        <div class="col-12">
+            {% if partners %}
+            <div class="brand_container owl-carousel ">
+                {% for partner in partners %}
+                <div class="brand_list">
+                    <div class="single_brand">
+                        {% if partner.url %}
+                        <a href="{{ partner.url }}" target="_blank" title="{{ partner.name }}">
+                        {% else %}
+                        <a href="#" title="{{ partner.name }}">
+                        {% endif %}
+                            {% if partner.image_url %}
+                            <img src="{{ partner.image_url }}" alt="{{ partner.name }}" loading="lazy">
+                            {% elif partner.image %}
+                            <img src="{{ partner.image.url }}" alt="{{ partner.name }}" loading="lazy">
+                            {% else %}
+                            <img src="/static/assets/img/brand/brand1.jpg" alt="{{ partner.name }}" loading="lazy">
+                            {% endif %}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!--brand area end-->

@@ -1,0 +1,48 @@
+<!--blog area start-->
+<div class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title title_style2">
+                    <div class="title_content">
+                        <h2><span>Latest</span> Blog Posts</h2>
+                    </div>
+                </div>
+                </div>
+        </div>   
+        <div class="row">
+            <div class="blog_container blog_column4 owl-carousel">
+                {% for post in blogs %}
+                <div class="col-lg-3">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="blog_thumb">
+                                {% if post.image_url %}
+                                <a href="/blog/"><img src="{{ post.image_url }}" alt="{{ post.title }}"></a>
+                                {% elif post.image %}
+                                <a href="/blog/"><img src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+                                {% else %}
+                                <a href="/blog/"><img src="/static/assets/img/blog/blog1.jpg" alt="{{ post.title }}"></a>
+                                {% endif %}
+                            </div>
+                            <figcaption class="blog_content">
+                                <h4><a href="/blog/">{{ post.title }}</a></h4>
+                                <div class="post_meta">
+                                    <p>{{ post.created_at|date:"d M Y" }}</p>
+                                </div>
+                                <div class="post_desc">
+                                    <p>{{ post.content|truncatechars:100 }}</p>
+                                </div>
+                                <footer class="post_readmore">
+                                    <a href="/blog/">Continue Reading</a>
+                                </footer>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--blog area end-->
