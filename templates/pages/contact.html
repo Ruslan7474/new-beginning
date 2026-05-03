@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">   
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>{{contactJamshit.title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>
+<!--breadcrumbs area end-->
+
+<div class="contact_page_bg">
+    <!--contact map start-->
+    <div class="contact_map">
+        <div class="map-area">
+            {{contactJamshit.map|safe}}
+        </div>
+    </div>
+    <!--contact map end-->
+    <div class="container">
+        <!--contact area start-->
+        <div class="contact_area">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact_message content">
+                        <h3>{{contactJamshit.title}}</h3>    
+                            <p>{{contactJamshit.desc}}</p>
+                        <ul>
+                            <li><i class="fa fa-map"></i>
+                                Адрес : {{contactJamshit.address}}
+                            </li>
+                            <li><i class="fa fa-phone"></i> 
+                                <a href="tel:{{contactJamshit.phone}}">
+                                    {{contactJamshit.phone}}</a>
+                            </li>
+                            <li><i class="fa fa-envelope-o"></i> 
+                                <a href="mailto:{{contactJamshit.email}}">
+                                {{contactJamshit.email}}</a>
+                            </li>
+                        </ul>             
+                    </div> 
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="contact_message form">
+                        <h3>Заявки</h3>   
+                        <form id="contact-form" method="POST">
+                            {% csrf_token %}
+                            <p> <label> Ваше ФИО</label>{{form.name}}</p>
+                            <p> <label> Ваш E-mail</label>{{form.email}}</p>   
+                            <p> <label> Тема</label>{{form.subject}}</p>   
+                            <div class="contact_textarea">
+                                <label>Ваше сообщение</label>
+                                {{form.message}}
+                            </div>   
+                            <button type="submit">Отправить</button>  
+                            <p class="form-messege"></p>
+                        </form> 
+
+                    </div> 
+                </div>
+            </div>   
+        </div>
+        <!--contact area end-->
+    </div>
+</div>
+
+{% endblock content %}

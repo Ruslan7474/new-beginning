@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "layouts/slider.html" %}
+    {% include "layouts/banner-parts.html" %}
+
+    <!--home section bg area start-->
+    <div class="home_section_bg">
+        
+        {% include "layouts/product.html" %}
+
+        {% include "layouts/blog.html" %}
+    </div>
+    <!--home section bg area end-->
+    
+    {% include "layouts/partners.html" %}
+
+{% endblock content %}

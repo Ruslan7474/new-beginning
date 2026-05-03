@@ -1,0 +1,368 @@
+<!--header area start-->
+{% load i18n %}
+<!--offcanvas menu area start-->
+<div class="off_canvars_overlay">
+            
+</div>
+<div class="offcanvas_menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
+                    </div>
+                    <div class="call_support">
+                        <p><i class="icon-phone-call" aria-hidden="true"></i> 
+                            <span>{% trans "Позвонить" %}: <a href="tel:+996 700 700 700">+996 700 700 700</a></span>
+                        </p>
+
+                    </div>
+                    <div class="header_account">
+                        <ul>
+                            <li class="language">
+                                <a href="#">
+                                    <img width='40px' src="https://di-ci.ru/images/new/unnamed%20(1).png"> 
+                                    {{ LANGUAGE_CODE }} 
+                                    <i class="ion-chevron-down"></i>
+                                </a>
+                                <ul class="dropdown_language">
+                                    <li class='mt-1'>
+                                        <form action='{% url "set_language" %}' method='post'>
+                                            {% csrf_token %}
+                                            <input type='hidden' name='language' value='ru'>
+                                            <button class='btn {% if LANGUAGE_CODE == 'ru' %} btn-danger {% else %} btn-outline-danger {% endif %}' type='submit'>
+                                                Русский</button>
+                                        </form>
+                                    </li>
+                                    <li class='mt-1 mb-1'>
+                                        <form action='{% url "set_language" %}' method='post'>
+                                            {% csrf_token %}
+                                            <input type='hidden' name='language' value='en'>
+                                            <button class='btn {% if LANGUAGE_CODE == 'en' %} btn-danger {% else %} btn-outline-danger {% endif %}' type='submit'>
+                                                English</button>
+                                        </form>
+                                </li>
+                                </ul>
+                            </li>
+                            <li class="currency"><a href="index.html#">USD <i class="ion-chevron-down"></i></a>
+                                <ul class="dropdown_currency">
+                                    <li><a href="index.html#">EUR – Euro</a></li>
+                                    <li><a href="index.html#">GBP – British Pound</a></li>
+                                    <li><a href="index.html#">INR – India Rupee</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_top_links">
+                        <ul>
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url "profile" %}">{% trans "Кабинет" %}</a></li>
+                                <li><a href="{% url "logout" %}">{% trans "Выйти" %}</a></li> 
+                            {% else %}
+                                <li><a href="{% url "register" %}">{% trans "Регистрация" %}</a></li>
+                                <li><a href="{% url "login" %}">{% trans "Логин" %}</a></li> 
+                            {% endif %}
+                        </ul>
+                    </div> 
+                    <div class="search_container">
+                        <form action="{% url "search" %}" method='get'> 
+                            <div class="search_box">
+                                <input placeholder="{% trans "Поиск товаров" %}..." name='q' type="text">
+                                <button type="submit">{% trans "Поиск" %}</button> 
+                            </div>
+                        </form>
+                    </div> 
+                    <div id="menu" class="text-left ">
+                        <ul class="offcanvas_main_menu">
+                            <li class="menu-item-has-children active">
+                                <a href="{% url "home" %}">{% trans "Главная" %}</a>
+                            </li> 
+                            <li class="menu-item-has-children">
+                                <a href="{% url "blog" %}">{% trans "Блог" %}</a>
+                            </li>  
+                            <li class="menu-item-has-children">
+                                <a href="{% url "about" %}">{% trans "О нас" %}</a>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="{% url "contact" %}">{% trans "Контакты" %}</a> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="offcanvas_footer">
+                        <span><a href="index.html#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="index.html#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="index.html#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="linkedin"><a href="index.html#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--offcanvas menu area end-->
+
+<header>
+    <div class="main_header">
+        <!--header top start-->
+        <div class="header_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="header_account">
+                            <ul>
+                                <li class="language">
+                                    <a href="#">
+                                        <img width='40px' src="https://di-ci.ru/images/new/unnamed%20(1).png"> 
+                                        {{ LANGUAGE_CODE }} 
+                                        <i class="ion-chevron-down"></i>
+                                    </a>
+                                    <ul class="dropdown_language">
+                                    <li class='mt-1'>
+                                        <form action='{% url "set_language" %}' method='post'>
+                                            {% csrf_token %}
+                                            <input type='hidden' name='language' value='ru'>
+                                            <button class='btn {% if LANGUAGE_CODE == 'ru' %} btn-danger {% else %} btn-outline-danger {% endif %}' type='submit'>
+                                                Русский</button>
+                                        </form>
+                                    </li>
+                                    <li class='mt-1 mb-1'>
+                                        <form action='{% url "set_language" %}' method='post'>
+                                            {% csrf_token %}
+                                            <input type='hidden' name='language' value='en'>
+                                            <button class='btn {% if LANGUAGE_CODE == 'en' %} btn-danger {% else %} btn-outline-danger {% endif %}' type='submit'>
+                                                English</button>
+                                        </form>
+                                    </li>
+                                    </ul>
+                                </li>
+                                <li class="currency"><a href="index.html#">USD <i class="ion-chevron-down"></i></a>
+                                    <ul class="dropdown_currency">
+                                        <li><a href="index.html#">EUR – Euro</a></li>
+                                        <li><a href="index.html#">GBP – British Pound</a></li>
+                                        <li><a href="index.html#">INR – India Rupee</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <div class="header_top_links text-right">
+                            <ul>
+                                {% if request.user.is_authenticated %}
+                                    <li><a href="{% url "profile" %}">{% trans "Кабинет" %}</a></li>
+                                    <li><a href="{% url "logout" %}">{% trans "Выйти" %}</a></li> 
+                                {% else %}
+                                    <li><a href="{% url "register" %}">{% trans "Регистрация" %}</a></li>
+                                    <li><a href="{% url "login" %}">{% trans "Логин" %}</a></li> 
+                                {% endif %}
+                            </ul>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header top start-->
+
+        <!--header middel start-->
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-4">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-6 col-sm-6 col-6">
+                        <div class="header_right_box">
+                            <div class="search_container">
+                                <form action="{% url "search" %}" method='get'> 
+                                    <div class="search_box">
+                                        <input placeholder="{% trans "Поиск товаров" %}..." name='q' type="text">
+                                        <button type="submit">{% trans "Поиск" %}</button> 
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="header_configure_area">
+                                <div class="header_wishlist">
+                                    <a href="{% url "wishlist" %}">
+                                        <i class="icon-heart"></i>
+                                        {% if wishlist.total_items > 0 %}
+                                        <span class="wishlist_count">{{wishlist.total_items}}</span>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="mini_cart_wrapper">
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-shopping-bag2"></i>
+                                        {% if cart.total_price %}
+                                        <span class="cart_price">{{total_price}}{% trans "сом" %}
+                                            <i class="ion-ios-arrow-down"></i>
+                                        </span>
+                                        {% endif %}
+                                        {% if cart.total_quantity > 0 %}
+                                        <span class="cart_count">{{cart.total_quantity}}</span>
+                                        {% endif %}
+                                    </a>
+                                    <!--mini cart-->
+                                    <div class="mini_cart">
+                                        <div class="mini_cart_inner">
+                                            <div class="cart_close">
+                                                <div class="cart_text">
+                                                    <h3>{% trans "Корзина" %}</h3>
+                                                </div>
+                                                <div class="mini_cart_close">
+                                                    <a href="javascript:void(0)"><i class="icon-x"></i></a>
+                                                </div>
+                                            </div>
+                                           {% for item in cart_items %}
+                                            <div class="cart_item">
+                                                <div class="cart_img">
+                                                    <a href="#">
+                                                        <img src="{{item.product.get_main_image}}"></a>
+                                                </div>
+                                                <div class="cart_info">
+                                                    <a href="#">{{item.product.name}}</a>
+                                                        <p>Кол-во: {{item.quantity}} X 
+                                                            <span> {{item.price}} {% trans "сом" %} </span>
+                                                        </p>    
+                                                </div>
+                                                <div class="cart_remove">
+                                                    <form action="{% url "remove_from_cart" item.id %}" method='post'>
+                                                        {% csrf_token %}
+                                                        <button type='submit'>X</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            {% empty %}
+                                            {% trans "Корзина пуста" %}
+                                            {% endfor %}
+                                            <div class="mini_cart_table"> 
+                                                <div class="cart_total mt-10">
+                                                    <span>{% trans "Сумма" %}:</span>
+                                                    <span class="price">{{cart.total_price}} {% trans "сом" %}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_footer">
+                                            <div class="cart_button">
+                                                <a href="{% url "cart_detail" %}">{% trans "Посмотреть корзину" %}</a>
+                                            </div>
+                                            <div class="cart_button">
+                                                <a class="active" href="#">{% trans "Оформить" %}</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--mini cart end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+
+        <!--header bottom satrt-->
+        <div class="header_bottom sticky-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class=" col-lg-3">
+                        <div class="categories_menu">
+                            <div class="categories_title">
+                                <h2 class="categori_toggle">{% trans "Все категории" %}</h2>
+                            </div> 
+                            <div class="categories_menu_toggle">
+                                <ul>  
+                                    {% for category in categories %} 
+                                        <li class="
+                                            {% if category.get_children.exists %}menu_item_children{% endif %}
+                                            {% if forloop.counter > category_limit %}hidden{% endif %}"> 
+                                            <a href="#">
+                                                {{ category.name }}
+                                                {% if category.get_children.exists %}
+                                                    <i class="fa fa-angle-right"></i>
+                                                {% endif %}
+                                            </a>
+                                            {% if category.get_children.exists %}
+                                                <ul class="categories_mega_menu">
+                                                    {% for child in category.get_children %}
+                                                        <li>
+                                                            <a href="#">
+                                                                {{ child.name }}
+                                                            </a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+
+                                    {% if categories|length > category_limit %}
+                                        <li>
+                                            <a href="#" id="more-btn">
+                                                <i class="fa fa-plus"></i> {% trans "Еще категория" %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                        <style>
+                            .hidden {
+                                display: none;
+                            }
+                        </style>
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const btn = document.getElementById("more-btn");
+
+                            if (btn) {
+                                btn.addEventListener("click", function(e) {
+                                    e.preventDefault();
+
+                                    document.querySelectorAll(".hidden").forEach(function(el) {
+                                        el.classList.remove("hidden");
+                                    });
+
+                                    btn.style.display = "none";
+                                });
+                            }
+                        });
+                        </script>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="main_menu menu_position text-left"> 
+                            <nav>  
+                                <ul>
+                                    <li><a class="active"  href="{% url "home" %}">{% trans "Главная" %}</a></li>
+                                    <li><a href="{% url "blog" %}">{% trans "Блог" %}</a></li>
+                                    <li><a href="{% url "about" %}">{% trans "О нас" %}</a></li>
+                                    <li><a href="{% url "contact" %}">{% trans "Контакты" %}</a></li>
+                                </ul>  
+                            </nav> 
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="call_support text-right">
+                            <p><i class="icon-phone-call" aria-hidden="true"></i> 
+                                <span>{% trans 'Позвонить' %}:  <a href="tel:+996 700 700 700">+996 700 700 700</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header bottom end-->
+    </div> 
+</header>
+<!--header area end-->
